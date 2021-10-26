@@ -1,3 +1,4 @@
 # spring-boot-fundamentals-platzi
 
-* Added examples > dependency injection
+1) Added examples > dependency injection
+2) New own dependency
