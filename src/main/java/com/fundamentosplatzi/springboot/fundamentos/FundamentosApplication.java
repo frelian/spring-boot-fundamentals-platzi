@@ -1,6 +1,7 @@
 package com.fundamentosplatzi.springboot.fundamentos;
 
 import com.fundamentosplatzi.springboot.fundamentos.bean.MyBean;
+import com.fundamentosplatzi.springboot.fundamentos.bean.MyBeanWithDependency;
 import com.fundamentosplatzi.springboot.fundamentos.component.ComponentDependency;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
@@ -20,11 +21,13 @@ public class FundamentosApplication implements CommandLineRunner {
 
 		// I create constructor of the class, as parameters I receive my dependency to be able to inject it
 		// 2) add my new interface in constructor.
-		public FundamentosApplication(@Qualifier("componentTwoImplement") ComponentDependency componentDependency, MyBean myBean) {
+		public FundamentosApplication(@Qualifier("componentTwoImplement") ComponentDependency componentDependency, MyBean myBean, MyBeanWithDependency myBeanWithDependency) {
 			this.componentDependency = componentDependency;
 			this.myBean = myBean; // Call myBean property = myBean param
+			this.myBeanWithDependency = myBeanWithDependency;
 		}
 
+		private MyBeanWithDependency myBeanWithDependency;
 	// End section > Inject dependency
 
 	public static void main(String[] args) {
@@ -38,5 +41,7 @@ public class FundamentosApplication implements CommandLineRunner {
 
 		// 3) Call my dependency and the implement is the print method
 		myBean.print();
+
+		myBeanWithDependency.printWithDependency();
 	}
 }
